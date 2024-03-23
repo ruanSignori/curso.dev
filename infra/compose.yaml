@@ -5,3 +5,18 @@ services:
       - ../.env.development
     ports:
       - "5450:5432"
+    networks:
+    - postgres-compose-network
+  pgAdmin:
+    image: dpage/pgadmin4
+    env_file:
+      - ../.env.development
+    ports:
+      - "1650:80"
+    depends_on:
+      - database
+    networks:
+      - postgres-compose-network
+networks: 
+  postgres-compose-network:
+    driver: bridge
