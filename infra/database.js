@@ -9,8 +9,7 @@ async function query(queryObject) {
   } catch (error) {
     throw new Error(error.message);
   } finally {
-    if (client)
-      await client.end();
+    await client.end();
   }
 }
 
