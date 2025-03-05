@@ -3,6 +3,7 @@ services:
     image: "postgres:16.0-alpine3.18"
     env_file:
       - ../.env.development
+    container_name: ${DB_CONTAINER_NAME}
     ports:
       - "5450:5432"
     networks:
@@ -11,6 +12,7 @@ services:
     image: dpage/pgadmin4
     env_file:
       - ../.env.development
+    container_name: ${PGADMIN_CONTAINER_NAME}
     ports:
       - "1650:80"
     depends_on:
